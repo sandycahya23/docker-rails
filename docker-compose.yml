@@ -1,0 +1,18 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_db
+    ports:
+      - "3307:3306"
+  web:
+    build: .
+    # command: ["bundle exec rails s -b 0.0.0.0"]
+    ports:
+      - "3000:3000"
+    platform: linux/arm64/v8
+volumes:
+  logvolume01: {}
